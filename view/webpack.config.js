@@ -1,14 +1,35 @@
-const path = require('path')
 
 module.exports = {
   mode: 'development',
-  entry: './src/example.js',
+  entry: './src/main.jsx',
   resolve: {
-    extensions: [ '.js' ]
+    extensions: [ '.js', '.jsx' ]
   },
-  output: {
-    filename: 'example.js',
-    path: path.join(__dirname, 'dist')
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader' // will use .babelrc
+        }
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      }
+    ]
   },
-  devtool: 'sourcemap'
+  devtool: 'source-map'
 }
