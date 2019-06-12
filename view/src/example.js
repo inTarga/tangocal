@@ -5,22 +5,38 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import nbLocale from '@fullcalendar/core/locales/nb';
 
-document.addEventListener('DOMContentLoaded', function() {
-  var calendarEl = document.getElementById('calendar');
+/*var ajaxevents;
+var ourRequest = new XMLHttpRequest();
+ourRequest.open('GET', 'http://localhost:1323/jsonevent');
+ourRequest.onload = function() {
+    if (ourRequest.status >= 200 && ourRequest.status < 400) {
+        ajaxevents = JSON.parse(ourRequest.responseText);
+        console.log("got JSON!" + ajaxevents);
+        calendar.render();
+    } else {
+        console.log("We connected to the server, but it returned an error.");
+    }
+}
 
-  var calendar = new Calendar(calendarEl, {
-    plugins: [ interactionPlugin, dayGridPlugin, timeGridPlugin, listPlugin ],
-    header: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-    },
-	  //defaultDate: '2018-01-12',
-    navLinks: true, // can click day/week names to navigate views
-    editable: true,
-    eventLimit: true, // allow "more" link when too many events
-	locale: nbLocale,
-    events: [
+console.log("something...");
+console.log(ajaxevents);*/
+
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new Calendar(calendarEl, {
+        plugins: [ interactionPlugin, dayGridPlugin, timeGridPlugin, listPlugin ],
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+        },
+        //defaultDate: '2018-01-12',
+        navLinks: true, // can click day/week names to navigate views
+        editable: true,
+        eventLimit: true, // allow "more" link when too many events
+	    locale: nbLocale,
+    /*events: [
       {
         title: 'All Day Event',
         start: '2018-01-01',
@@ -75,8 +91,10 @@ document.addEventListener('DOMContentLoaded', function() {
         url: 'http://google.com/',
         start: '2018-01-28'
       }
-    ]
-  });
+    ]*/
+        events: '/jsonevent'
+    });
 
-  calendar.render();
+    calendar.render();
 });
+//ourRequest.send();
