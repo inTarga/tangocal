@@ -4,6 +4,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction"; // needed for dayClick
+import bootstrapPlugin from '@fullcalendar/bootstrap';
 import nbLocale from "@fullcalendar/core/locales/nb";
 
 import "../main.scss";
@@ -19,30 +20,29 @@ export default class Cal extends React.Component {
   render() {
     return (
       <div className="cal-app">
-        <div className="cal-app-top">
-          <button onClick={this.toggleWeekends}>toggle weekends</button>&nbsp;
-          <button onClick={this.gotoPast}>go to a date in the past</button>
-          &nbsp; (also, click a date/time to add an event)
-        </div>
         <div className="cal-app-calendar">
           <FullCalendar
             defaultView="dayGridMonth"
             header={{
               left: "prev,next today",
-              center: "title",
-              right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
+              right: "title",
+            }}
+            footer={{
+              center: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
             }}
             plugins={[
               dayGridPlugin,
               timeGridPlugin,
               interactionPlugin,
-              listPlugin
+              listPlugin,
+              bootstrapPlugin
             ]}
             ref={this.calendarComponentRef}
             weekends={this.state.calendarWeekends}
             events={this.state.calendarEvents}
             dateClick={this.handleDateClick}
             locale={this.state.locale}
+            themeSystem="bootstrap"
           />
         </div>
       </div>

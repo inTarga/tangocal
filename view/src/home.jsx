@@ -1,8 +1,13 @@
 import React from "react";
-import Cal from './components/calendar'
+import Cal from "./components/calendar";
+import { Navtop } from "./components/navbar";
+import { Container } from "react-bootstrap";
 
 export const Home = () => (
-  <div>
-    <Cal />
-  </div>
-)
+  <>
+    <Navtop />
+    <Container>
+      <Cal />
+    </Container>
+  </>
+);

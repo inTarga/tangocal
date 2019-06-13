@@ -8,12 +8,14 @@
     "build": "webpack"
   },
   "dependencies": {
+    "@fullcalendar/bootstrap": "^4.2.0",
     "@fullcalendar/daygrid": "^4.1.0",
     "@fullcalendar/interaction": "^4.1.0",
+    "@fullcalendar/list": "^4.2.0",
     "@fullcalendar/react": "^4.1.0",
     "@fullcalendar/timegrid": "^4.1.0",
-    "@fullcalendar/list": "^4.1.0",
     "react": "^16.7.0",
+    "react-bootstrap": "^1.0.0-beta.9",
     "react-dom": "^16.7.0"
   },
   "devDependencies": {
