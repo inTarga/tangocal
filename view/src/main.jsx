@@ -1,5 +1,5 @@
 import React from 'react'
 import { render } from 'react-dom'
-import CalApp from './CalApp'
+import { Home } from './home'
 
-render(<CalApp />, document.getElementById('root'))
+render(<Home />, document.getElementById('root'))

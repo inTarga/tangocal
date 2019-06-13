@@ -6,9 +6,9 @@ import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction"; // needed for dayClick
 import nbLocale from "@fullcalendar/core/locales/nb";
 
-import "./main.scss";
+import "../main.scss";
 
-export default class CalApp extends React.Component {
+export default class Cal extends React.Component {
   calendarComponentRef = React.createRef();
   state = {
     calendarWeekends: true,

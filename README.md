@@ -17,7 +17,7 @@
 * [ ]     ->webscraper?
 
 
-    
+
 => Fix up frontend
 * [ ]     ->pretty banner
 * [ ]     ->adding events interface
@@ -30,9 +30,11 @@
 * [ ]     ->alerts component
 * [ ]     ->localisation
 * [ ]     ->footer (link to here?)
+* [ ]     ->make all components functional?
+* [ ]     ->dark mode?
 
 
-    
+
 => Deployment
 * [ ]     ->get server
 * [ ]     ->get domain
