@@ -9,7 +9,7 @@ import nbLocale from "@fullcalendar/core/locales/nb";
 
 import "../main.scss";
 
-export default class Cal extends React.Component {
+class Cal extends React.Component {
   calendarComponentRef = React.createRef();
   state = {
     calendarWeekends: true,
@@ -75,3 +75,4 @@ export default class Cal extends React.Component {
     }
   };
 }
+export default Cal;

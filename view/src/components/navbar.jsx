@@ -1,7 +1,9 @@
-import React from "react";
-import { Nav, Navbar, Button, Form } from "react-bootstrap";
+import React from 'react';
+import {
+  Nav, Navbar,
+} from 'react-bootstrap';
 
-export const Navtop = () => (
+const Navtop = () => (
   <Navbar bg="primary" variant="dark">
     <Navbar.Brand href="#home">TangoKalender</Navbar.Brand>
     <Nav className="mr-auto">
@@ -9,3 +11,4 @@ export const Navtop = () => (
     </Nav>
   </Navbar>
 );
+export default Navtop;

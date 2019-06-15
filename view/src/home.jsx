@@ -1,13 +1,16 @@
-import React from "react";
-import Cal from "./components/calendar";
-import { Navtop } from "./components/navbar";
-import { Container } from "react-bootstrap";
+import React from 'react';
+import { Container } from 'react-bootstrap';
+import Cal from './components/calendar';
+import Navtop from './components/navbar';
+import TabsForForms from './components/tabs';
 
-export const Home = () => (
+const Home = () => (
   <>
     <Navtop />
+    <Cal />
     <Container>
-      <Cal />
+      <TabsForForms />
     </Container>
   </>
 );
+export default Home;
