@@ -12,10 +12,10 @@ const TabsForForms = () => (
       <h1>something</h1>
     </Tab>
     <Tab eventKey="admin" title="Admin">
-      <Button variant="primary" onClick={() => fetch('/reset', { method: 'POST' })}>
+      <Button className="m-1" variant="primary" onClick={() => fetch('/reset', { method: 'POST' })}>
         Tilbakestill kalender
       </Button>
-      <Button variant="primary" onClick={() => fetch('/placeholder', { method: 'POST' })}>
+      <Button className="m-1" variant="primary" onClick={() => fetch('/placeholder', { method: 'POST' })}>
         Legg til hendelser
       </Button>
     </Tab>
