@@ -22,7 +22,7 @@ class Cal extends React.Component {
       <div className="cal-app">
         <div className="cal-app-calendar">
           <FullCalendar
-            defaultView="dayGridMonth"
+            defaultView="listWeek"
             header={{
               left: "prev,next today",
               right: "title",

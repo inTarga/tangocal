@@ -23,3 +23,19 @@
 .btn {
   padding: 10px;
 }
+
+.fc-list-view {
+  border-width: 0px;
+  border-style: solid;
+}
+
+/* table resets */
+.fc .fc-list-table {
+  table-layout: auto;
+  /* for shrinkwrapping cell content */
+}
+
+.fc-list-table td {
+  border-width: 1px 0 0;
+  padding: 8px 14px;
+}
