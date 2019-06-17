@@ -1,6 +1,7 @@
 package main
 
 import (
+	//"encoding/json"
 	"fmt"
 	"github.com/go-pg/pg"
 	//"github.com/go-pg/pg/orm"
@@ -85,6 +86,19 @@ func (repo *repo) addEvents(events Events) error {
 	return err
 }
 
+func (repo *repo) submitEvent(c echo.Context) error {
+	var event Event
+	err := c.Bind(&event)
+	if err != nil {
+		fmt.Println("Bind Error")
+		fmt.Println(err)
+	}
+	fmt.Println(c.ParamValues())
+	fmt.Println("adding custom event") //todo remove
+	fmt.Println(event)
+	return repo.addEvent(event)
+}
+
 func main() {
 	e := echo.New()
 
@@ -100,6 +114,7 @@ func main() {
 	e.GET("/jsonevent", repo.getJson)
 	e.POST("/reset", repo.restartSchema)
 	e.POST("/placeholder", repo.placeholderEvents)
+	e.POST("/addevent", repo.submitEvent)
 
 	e.Logger.Fatal(e.Start(":1323"))
 }
