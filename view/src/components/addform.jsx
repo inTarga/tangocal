@@ -83,7 +83,7 @@ const AddForm = () => {
           value={values.description}
         />
       </Form.Group>
-      <Button className="p-1" type="submit">
+      <Button className="p-1" type="submit" onClick={() => window.location.reload()}>
         Sende inn
       </Button>
     </Form>
