@@ -1,11 +1,13 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction"; // needed for dayClick
-import bootstrapPlugin from '@fullcalendar/bootstrap';
+import bootstrapPlugin from "@fullcalendar/bootstrap";
 import nbLocale from "@fullcalendar/core/locales/nb";
+import enLocale from "@fullcalendar/core/locales/en-gb";
 
 import "../main.scss";
 
@@ -13,7 +15,6 @@ class Cal extends React.Component {
   calendarComponentRef = React.createRef();
   state = {
     calendarWeekends: true,
-    calendarEvents: "/jsonevent", // initial event data
     locale: nbLocale
   };
 
@@ -25,7 +26,7 @@ class Cal extends React.Component {
             defaultView="listWeek"
             header={{
               left: "prev,next today",
-              right: "title",
+              right: "title"
             }}
             footer={{
               center: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
@@ -39,7 +40,7 @@ class Cal extends React.Component {
             ]}
             ref={this.calendarComponentRef}
             weekends={this.state.calendarWeekends}
-            events={this.state.calendarEvents}
+            events={this.props.events}
             dateClick={this.handleDateClick}
             locale={this.state.locale}
             themeSystem="bootstrap"
