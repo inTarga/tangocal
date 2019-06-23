@@ -42,7 +42,7 @@ class Cal extends React.Component {
             weekends={this.state.calendarWeekends}
             events={this.props.events}
             dateClick={this.handleDateClick}
-            locale={this.state.locale}
+            locale={this.props.locale == "nb" ? nbLocale : enLocale}
             themeSystem="bootstrap"
           />
         </div>

@@ -7,12 +7,13 @@ import Footer from './components/footer';
 
 const Home = () => {
   const [events, setEvents] = useState('/jsonevent');
+  const [locale, setLocale] = useState('nb');
   return (
     <>
-      <Navtop />
-      <Cal events={events} />
+      <Navtop locale={locale} setLocale={setLocale} />
+      <Cal events={events} locale={locale} />
       <Container>
-        <TabsForForms setEvents={setEvents} />
+        <TabsForForms setEvents={setEvents} locale={locale} />
       </Container>
       <Footer />
     </>
