@@ -13,7 +13,7 @@
 * [ ]     ->add filtering capabilities
 * [ ]     ->make event model in db more robust
 * [ ]     ->add auth
-* [ ]     ->JSON parser
+* [?]     ->JSON parser
 * [ ]     ->email system for notifications and backup?
 * [ ]     ->webscraper?
 
@@ -21,7 +21,7 @@
 
 => Fix up frontend
 * [-]     ->pretty banner
-* [ ]     ->adding events interface
+* [x]     ->adding events interface
 * [ ]     ->filtering events interface
 * [ ]     ->event info displayer
 * [ ]     ->make mobile friendly
@@ -29,9 +29,10 @@
 * [x]     ->bootstrap theming
 * [ ]     ->group/class descriptions
 * [ ]     ->alerts component
-* [ ]     ->localisation
-* [ ]     ->fix agenda/list view
-* [ ]     ->footer (link to here?)
+* [x]     ->localisation
+* [x]     ->fix agenda/list view
+* [-]     ->footer (link to here?)
+* [-]     ->normalise event type localisation before event add
 * [ ]     ->make all components functional?
 * [ ]     ->dark mode?
 

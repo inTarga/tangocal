@@ -12,7 +12,7 @@ const Home = () => {
     <>
       <Navtop locale={locale} setLocale={setLocale} />
       <Cal events={events} locale={locale} />
-      <Container>
+      <Container className="p-2">
         <TabsForForms setEvents={setEvents} locale={locale} />
       </Container>
       <Footer />

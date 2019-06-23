@@ -7,11 +7,15 @@ const strings = new LocalizedStrings({
   nb: {
     title: 'TangoKalender',
     home: 'Hjem',
+    about: 'Om oss',
+    groups: 'Grupper',
     changeloc: 'English',
   },
   en: {
     title: 'TangoCalendar',
     home: 'Home',
+    about: 'About us',
+    groups: 'Groups',
     changeloc: 'Norsk',
   },
 });
@@ -24,6 +28,8 @@ const Navtop = (props) => {
       <Navbar.Brand href="#home">{strings.title}</Navbar.Brand>
       <Nav className="mr-auto">
         <Nav.Link href="#home">{strings.home}</Nav.Link>
+        <Nav.Link href="#about">{strings.about}</Nav.Link>
+        <Nav.Link href="#groups">{strings.groups}</Nav.Link>
       </Nav>
       <Button
         className="p-1"
