@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Form, Button } from 'react-bootstrap';
 import useForm from './useForm';
 
-const AddForm = () => {
+const AddForm = (props) => {
   function login() {
     // console.log(values);
     fetch('/addevent', {
@@ -11,7 +12,9 @@ const AddForm = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(values),
-    });
+    }).then(() => fetch('/jsonevent')
+      .then(response => response.json())
+      .then(json => props.setEvents(json)));
   }
 
   const { values, handleChange, handleSubmit } = useForm(login);
@@ -83,10 +86,13 @@ const AddForm = () => {
           value={values.description}
         />
       </Form.Group>
-      <Button className="p-1" type="submit" onClick={() => window.location.reload()}>
+      <Button className="p-1" type="submit">
         Sende inn
       </Button>
     </Form>
   );
+};
+AddForm.propTypes = {
+  setEvents: PropTypes.func.isRequired,
 };
 export default AddForm;
