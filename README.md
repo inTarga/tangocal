@@ -13,7 +13,7 @@
 * [ ]     ->add filtering capabilities
 * [-]     ->make event model in db more robust (inc. id and owner)
 * [ ]     ->add auth
-* [?]     ->JSON parser
+* [ ]     ->JSON parser for restoring backup
 * [ ]     ->email system for notifications and backup?
 * [ ]     ->webscraper?
 
