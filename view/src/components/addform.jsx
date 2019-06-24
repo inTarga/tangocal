@@ -49,7 +49,28 @@ const strings = new LocalizedStrings({
 
 const AddForm = (props) => {
   function login() {
-    // console.log(values);
+    console.log(values);
+    if (values.type === 'Klasse' || !values.hasOwnProperty('type')) {
+      values.type = 'Class';
+    }
+    values.textColor = '#f8f8f0';
+    if (values.type === 'Class') {
+      values.backgroundColor = '#5cb85c';
+      values.borderColor = '#5cb85c';
+    } else if (values.type === 'Practica') {
+      values.backgroundColor = '#f0ad4e';
+      values.borderColor = '#f0ad4e';
+    } else if (values.type === 'Milonga') {
+      values.backgroundColor = '#d9534f';
+      values.borderColor = '#d9534f';
+    } else if (values.type === 'Workshop') {
+      values.backgroundColor = '#5cb85c';
+      values.borderColor = '#5cb85c';
+    } else if (values.type === 'Festival') {
+      values.backgroundColor = '#5bc0de';
+      values.borderColor = '#5bc0de';
+    }
+    console.log(values);
     fetch('/addevent', {
       method: 'POST',
       headers: {
@@ -79,7 +100,7 @@ const AddForm = (props) => {
         <Form.Group as={Form.Col} className="p-1" controlId="formBasicLink">
           <Form.Label>{strings.linkLabel}</Form.Label>
           <Form.Control
-            name="link"
+            name="url"
             placeholder={strings.linkPlaceholder}
             onChange={handleChange}
             value={values.link}
@@ -108,7 +129,6 @@ const AddForm = (props) => {
           <Form.Control
             as="select"
             name="type"
-            placeholder="Type"
             onChange={handleChange}
             value={values.type}
           >

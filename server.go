@@ -10,10 +10,15 @@ import (
 )
 
 type Event struct {
-	Title string `json:"title"`
-	Link  string `json:"link"`
-	Start string `json:"start"`
-	//	End 	string
+	Title   string `json:"title"`
+	Url     string `json:"url"`
+	Start   string `json:"start"`
+	End     string `json:"end"`
+	Type    string `json:"type"`
+	Desc    string `json:"desc"`
+	Bgcol   string `json:"backgroundColor"`
+	Bordcol string `json:"borderColor"`
+	Textcol string `json:"textColor"`
 }
 
 type Events []Event
@@ -39,11 +44,18 @@ func (repo *repo) restartSchema(c echo.Context) error {
 		CREATE TABLE events
 		(
 			title 	text,
-			link 	text,
-			start 	text
+			url 	text,
+			start 	text,
+			"end" 	text,
+			type 	text,
+			"desc" 	text,
+			bgcol 	text,
+			bordcol text,
+			textcol text
 		);
 	`)
 	fmt.Println("reset") //replace with logging
+	fmt.Println(err)
 	return err
 }
 
@@ -52,17 +64,35 @@ func (repo *repo) placeholderEvents(c echo.Context) error {
 		Event{
 			"event1",
 			"event1.event",
-			"2019-06-23",
+			"2019-06-23T22:00:00",
+			"2019-06-23T23:00:00",
+			"Klasse",
+			"Desc1",
+			"#5cb85c",
+			"#5cb85c",
+			"#f8f8f0",
 		},
 		Event{
 			"event2",
 			"event2.event",
-			"2019-06-27",
+			"2019-06-27T22:00:00",
+			"2019-06-27T23:00:00",
+			"Milonga",
+			"Desc2",
+			"#5bc0de",
+			"#5bc0de",
+			"#f8f8f0",
 		},
 		Event{
 			"event3",
 			"event3.event",
-			"2019-06-28",
+			"2019-06-28T22:00:00",
+			"2019-06-28T23:00:00",
+			"Workshop",
+			"Desc3",
+			"#f0ad4e",
+			"#f0ad4e",
+			"#f8f8f0",
 		},
 	}
 	fmt.Println("placeholder") //remove...

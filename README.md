@@ -11,7 +11,7 @@
 
 => Fix up backend
 * [ ]     ->add filtering capabilities
-* [ ]     ->make event model in db more robust
+* [-]     ->make event model in db more robust (inc. id and owner)
 * [ ]     ->add auth
 * [?]     ->JSON parser
 * [ ]     ->email system for notifications and backup?
@@ -22,10 +22,11 @@
 => Fix up frontend
 * [-]     ->pretty banner
 * [x]     ->adding events interface
+* [ ]     ->adding events validation
 * [ ]     ->filtering events interface
 * [ ]     ->event info displayer
 * [ ]     ->make mobile friendly
-* [ ]     ->colouring for event types
+* [x]     ->colouring for event types
 * [x]     ->bootstrap theming
 * [ ]     ->group/class descriptions
 * [ ]     ->alerts component
