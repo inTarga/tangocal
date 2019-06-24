@@ -52,17 +52,17 @@ func (repo *repo) placeholderEvents(c echo.Context) error {
 		Event{
 			"event1",
 			"event1.event",
-			"2019-06-13",
+			"2019-06-23",
 		},
 		Event{
 			"event2",
 			"event2.event",
-			"2019-06-17",
+			"2019-06-27",
 		},
 		Event{
 			"event3",
 			"event3.event",
-			"2019-06-18",
+			"2019-06-28",
 		},
 	}
 	fmt.Println("placeholder") //remove...
