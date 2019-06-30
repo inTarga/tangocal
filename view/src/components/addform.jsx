@@ -151,7 +151,7 @@ const AddForm = (props) => {
           value={values.description}
         />
       </Form.Group>
-      <Button className="p-1" type="submit">
+      <Button className="m-1 btn-block" type="submit">
         {strings.submit}
       </Button>
     </Form>
