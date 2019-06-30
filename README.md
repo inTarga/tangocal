@@ -10,7 +10,7 @@
 
 
 => Fix up backend
-* [ ]     ->add filtering capabilities
+* [x]     ->add filtering capabilities
 * [-]     ->make event model in db more robust (inc. id and owner)
 * [ ]     ->add auth
 * [ ]     ->JSON parser for restoring backup
@@ -23,7 +23,7 @@
 * [-]     ->pretty banner
 * [x]     ->adding events interface
 * [ ]     ->adding events validation
-* [ ]     ->filtering events interface
+* [x]     ->filtering events interface
 * [ ]     ->event info displayer
 * [ ]     ->make mobile friendly
 * [x]     ->colouring for event types
@@ -33,7 +33,8 @@
 * [x]     ->localisation
 * [x]     ->fix agenda/list view
 * [-]     ->footer (link to here?)
-* [-]     ->normalise event type localisation before event add
+* [x]     ->normalise event type localisation before event add
+* [ ]     ->change event group based on who submits it
 * [ ]     ->make all components functional?
 * [ ]     ->dark mode?
 

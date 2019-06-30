@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Button } from 'react-bootstrap';
 import LocalizedStrings from 'react-localization';
-import useForm from './useForm';
+import useFormFilter from './useFormFilter';
 
 const strings = new LocalizedStrings({
   nb: {
@@ -29,21 +29,29 @@ const strings = new LocalizedStrings({
 
 const FilterForm = (props) => {
   function login() {
-    console.log(values);
-    /*
-    fetch('/addevent', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    }).then(() => fetch('/jsonevent')
+    console.log(types);
+    console.log(groups);
+    let url = '/jsonfilter?type=';
+    for (const type in types) {
+      console.log(type);
+      url += type;
+      url += ',';
+    }
+    url += '&group=';
+    for (const group in groups) {
+      console.log(group);
+      url += group;
+      url += ',';
+    }
+    console.log(url);
+    fetch(url)
       .then(response => response.json())
-      .then(json => props.setEvents(json)));
-    */
+      .then(json => props.setEvents(json));
   }
 
-  const { values, handleChange, handleSubmit } = useForm(login);
+  const {
+    groups, types, handleChange, handleSubmit,
+  } = useFormFilter(login);
   const { locale } = props;
   strings.setLanguage(locale);
   return (
@@ -57,35 +65,35 @@ const FilterForm = (props) => {
           name="class"
           label={strings.typeClass}
           onChange={handleChange}
-          value={values.class}
+          value="type"
         />
         <Form.Check
           inline
           name="practica"
           label={strings.typePractica}
           onChange={handleChange}
-          value={values.practica}
+          value="type"
         />
         <Form.Check
           inline
           name="milonga"
           label={strings.typeMilonga}
           onChange={handleChange}
-          value={values.milonga}
+          value="type"
         />
         <Form.Check
           inline
           name="workshop"
           label={strings.typeWorkshop}
           onChange={handleChange}
-          value={values.workshop}
+          value="type"
         />
         <Form.Check
           inline
           name="festival"
           label={strings.typeFestival}
           onChange={handleChange}
-          value={values.festival}
+          value="type"
         />
       </div>
       <div className="p-1">
@@ -97,7 +105,7 @@ const FilterForm = (props) => {
           name="otq"
           label="Oslo Tango Queer"
           onChange={handleChange}
-          value={values.otq}
+          value="group"
         />
       </div>
       <Button className="m-1 btn-block" type="submit">

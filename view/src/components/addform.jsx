@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Button } from 'react-bootstrap';
 import LocalizedStrings from 'react-localization';
-import useForm from './useForm';
+import useFormAdd from './useFormAdd';
 
 const strings = new LocalizedStrings({
   nb: {
@@ -82,7 +82,7 @@ const AddForm = (props) => {
       .then(json => props.setEvents(json)));
   }
 
-  const { values, handleChange, handleSubmit } = useForm(login);
+  const { values, handleChange, handleSubmit } = useFormAdd(login);
   const { locale } = props;
   strings.setLanguage(locale);
   return (

@@ -4,9 +4,10 @@ import (
 	//"encoding/json"
 	"fmt"
 	"github.com/go-pg/pg"
-	//"github.com/go-pg/pg/orm"
+	"github.com/go-pg/pg/orm"
 	"github.com/labstack/echo"
 	"net/http"
+	"strings"
 )
 
 type Event struct {
@@ -15,6 +16,7 @@ type Event struct {
 	Start   string `json:"start"`
 	End     string `json:"end"`
 	Type    string `json:"type"`
+	Group   string `json:"group"`
 	Desc    string `json:"desc"`
 	Bgcol   string `json:"backgroundColor"`
 	Bordcol string `json:"borderColor"`
@@ -37,6 +39,42 @@ func (repo *repo) getJson(c echo.Context) error {
 	return c.JSON(http.StatusOK, events)
 }
 
+func (repo *repo) getJsonFilter(c echo.Context) error {
+	var events Events
+
+	typesRaw := c.QueryParam("type")
+	types := strings.Split(typesRaw, ",")
+	fmt.Println(typesRaw)
+	fmt.Println(types)
+
+	groupsRaw := c.QueryParam("group")
+	groups := strings.Split(groupsRaw, ",")
+	fmt.Println(groupsRaw)
+	fmt.Println(groups)
+
+	err := repo.db.Model(&events).
+		WhereGroup(func(q *orm.Query) (*orm.Query, error) {
+			for _, etype := range types {
+				q = q.WhereOr("type = ?", etype)
+			}
+			return q, nil
+		}).
+		WhereGroup(func(q *orm.Query) (*orm.Query, error) {
+			for _, group := range groups {
+				q = q.WhereOr(`"group" = ?`, group)
+			}
+			return q, nil
+		}).
+		Select()
+	if err != nil {
+		fmt.Println(err)
+		return err
+	}
+
+	fmt.Println(events)
+	return c.JSON(http.StatusOK, events)
+}
+
 func (repo *repo) restartSchema(c echo.Context) error {
 	_, err := repo.db.Exec(`
 		DROP SCHEMA public CASCADE;
@@ -48,6 +86,7 @@ func (repo *repo) restartSchema(c echo.Context) error {
 			start 	text,
 			"end" 	text,
 			type 	text,
+			"group" text,
 			"desc" 	text,
 			bgcol 	text,
 			bordcol text,
@@ -66,7 +105,8 @@ func (repo *repo) placeholderEvents(c echo.Context) error {
 			"event1.event",
 			"2019-06-23T22:00:00",
 			"2019-06-23T23:00:00",
-			"Klasse",
+			"klasse",
+			"otq",
 			"Desc1",
 			"#5cb85c",
 			"#5cb85c",
@@ -77,7 +117,8 @@ func (repo *repo) placeholderEvents(c echo.Context) error {
 			"event2.event",
 			"2019-06-27T22:00:00",
 			"2019-06-27T23:00:00",
-			"Milonga",
+			"milonga",
+			"otq",
 			"Desc2",
 			"#5bc0de",
 			"#5bc0de",
@@ -88,7 +129,8 @@ func (repo *repo) placeholderEvents(c echo.Context) error {
 			"event3.event",
 			"2019-06-28T22:00:00",
 			"2019-06-28T23:00:00",
-			"Workshop",
+			"workshop",
+			"andre",
 			"Desc3",
 			"#f0ad4e",
 			"#f0ad4e",
@@ -142,6 +184,7 @@ func main() {
 
 	e.Static("/", "view")
 	e.GET("/jsonevent", repo.getJson)
+	e.GET("/jsonfilter", repo.getJsonFilter)
 	e.POST("/reset", repo.restartSchema)
 	e.POST("/placeholder", repo.placeholderEvents)
 	e.POST("/addevent", repo.submitEvent)
