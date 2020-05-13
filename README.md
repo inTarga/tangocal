@@ -1,3 +1,7 @@
+This project is abandoned.
+
+This was created to be an alternative to facebook events for organising local dance events, due to my personal frustration of reliance on facebook, with its shoddy privacy record and UX for this purpose. It was intended to be bootstrapped by webscraping event data from facebook to populate the calendar, but I came to realise that this would, unfortunately, not be legal under GDPR
+
 **TODO:**
 
 => Fix this README
